@@ -8,11 +8,18 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
+import main.MusicServices.ExampleService;
+
+import java.util.ArrayList;
 
 public class Controller {
 
+    // JFX fields
     public JFXTextField searchBarTextField;
     public Button searchButton;
+
+    // Services
+    ExampleService exampleService = new ExampleService();
 
     @FXML
     public void initialize() {
@@ -24,6 +31,10 @@ public class Controller {
                 searchButton.setDisable(searchBarTextField.getText().isEmpty());
             }
         });
+
+        // Connect Services
+        exampleService.connect();
+        exampleService.authenticate();
     }
 
 
@@ -34,10 +45,23 @@ public class Controller {
     public void searchButtonPressed(ActionEvent actionEvent) {
         // Get search query
         String query = searchBarTextField.getText();
-        System.out.println(query);
+        ArrayList<String> results = exampleService.getSongs(query);
+        if (results != null)  {
+            if (results.isEmpty())
+                System.out.println("No results found");
+            for (String song : results) {
+                System.out.println(song);
+            }
+        }
     }
 
-    public void searchFieldTextChange(InputMethodEvent inputMethodEvent) {
-        searchButton.setDisable(searchBarTextField.getText().isEmpty());
+    /**
+     * Method handling when enter is pressed in the search bar
+     * @param actionEvent the event
+     */
+    public void onSearchBarEnterPressed(ActionEvent actionEvent) {
+        // Same thing as search button pressed, as long as its not disabled
+        if (!searchButton.isDisabled())
+            searchButtonPressed(actionEvent);
     }
 }
