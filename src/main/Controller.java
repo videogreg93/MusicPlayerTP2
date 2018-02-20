@@ -6,9 +6,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.input.InputMethodEvent;
-import javafx.scene.input.MouseEvent;
 import main.MusicServices.ExampleService;
+import main.Song.Song;
 
 import java.util.ArrayList;
 
@@ -45,11 +44,11 @@ public class Controller {
     public void searchButtonPressed(ActionEvent actionEvent) {
         // Get search query
         String query = searchBarTextField.getText();
-        ArrayList<String> results = exampleService.getSongs(query);
+        ArrayList<Song> results = exampleService.getSongs(query);
         if (results != null)  {
             if (results.isEmpty())
                 System.out.println("No results found");
-            for (String song : results) {
+            for (Song song : results) {
                 System.out.println(song);
             }
         }

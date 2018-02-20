@@ -1,16 +1,18 @@
 package main.MusicServices;
 
+import main.Song.Song;
+
 import java.util.ArrayList;
 
 public class ExampleService implements ServiceInterface {
-    ArrayList<String> songs;
+    ArrayList<Song> songs;
     boolean isConnected = false;
 
     public ExampleService() {
-        songs = new ArrayList<String>();
-        songs.add("People are Strange");
-        songs.add("Sweet Child O' Mine");
-        songs.add("Let it Be");
+        songs = new ArrayList<Song>();
+        songs.add(new Song("People are Strange"));
+        songs.add(new Song("Sweet Child O' Mine"));
+        songs.add(new Song("Let it Be"));
     }
     @Override
     public void connect() {
@@ -31,16 +33,16 @@ public class ExampleService implements ServiceInterface {
     }
 
     @Override
-    public ArrayList<String> getSongs(String query) {
+    public ArrayList<Song> getSongs(String query) {
         // Example fetching of songs selon query
         if (!isConnected) {
             System.out.println("Must be connected");
             return null;
         }
         query = query.toLowerCase();
-        ArrayList<String> results = new ArrayList<String>();
-        for (String song : songs) {
-            if (song.toLowerCase().contains(query))
+        ArrayList<Song> results = new ArrayList<Song>();
+        for (Song song : songs) {
+            if (song.getTitle().toLowerCase().contains(query))
                 results.add(song);
         }
         return results;
