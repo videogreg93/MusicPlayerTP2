@@ -1,11 +1,13 @@
 package main;
 
+import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import main.MusicServices.ExampleService;
 import main.Song.Song;
 
@@ -16,6 +18,7 @@ public class Controller {
     // JFX fields
     public JFXTextField searchBarTextField;
     public Button searchButton;
+    public JFXListView songResultsList;
 
     // Services
     ExampleService exampleService = new ExampleService();
@@ -44,12 +47,15 @@ public class Controller {
     public void searchButtonPressed(ActionEvent actionEvent) {
         // Get search query
         String query = searchBarTextField.getText();
+        searchBarTextField.clear();
         ArrayList<Song> results = exampleService.getSongs(query);
+        songResultsList.getItems().clear();
         if (results != null)  {
+            // TODO should be a dialog
             if (results.isEmpty())
-                System.out.println("No results found");
+                songResultsList.getItems().add(new Label("No results found"));
             for (Song song : results) {
-                System.out.println(song);
+                songResultsList.getItems().add(new Label(song.getTitle()));
             }
         }
     }
