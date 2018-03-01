@@ -5,10 +5,18 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TabPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import main.MusicServices.ExampleService;
+import main.Song.PlaylistManager;
 import main.Song.Song;
 
 import java.util.ArrayList;
@@ -19,9 +27,12 @@ public class Controller {
     public JFXTextField searchBarTextField;
     public Button searchButton;
     public JFXListView songResultsList;
+    public TabPane tabPane;
+    public JFXListView playlistListView;
 
     // Services
     ExampleService exampleService = new ExampleService();
+
 
     @FXML
     public void initialize() {
@@ -34,9 +45,13 @@ public class Controller {
             }
         });
 
+
+        PlaylistManager.init(playlistListView);
+
         // Connect Services
         exampleService.connect();
         exampleService.authenticate();
+
     }
 
 
@@ -51,11 +66,32 @@ public class Controller {
         ArrayList<Song> results = exampleService.getSongs(query);
         songResultsList.getItems().clear();
         if (results != null)  {
-            // TODO should be a dialog
-            if (results.isEmpty())
-                songResultsList.getItems().add(new Label("No results found"));
+            if (results.isEmpty()) {
+                Utils.ShowError("No songs found");
+            }
+
             for (Song song : results) {
-                songResultsList.getItems().add(new Label(song.getTitle()));
+                // Create an hbox with an image, song name, artist name, etc.
+                HBox hbox = new HBox(8); // spacing = 8
+                // Image
+                Image image = song.getImage();
+                ImageView imageView = new ImageView();
+                imageView.setImage(image);
+                imageView.setFitWidth(100);
+                imageView.setPreserveRatio(true);
+                // Seperator
+                Region seperator = new Region();
+                HBox.setHgrow(seperator, Priority.ALWAYS);
+                // Add to playlist Button
+                Button addToPlaylist = new Button("Add to playlist");
+                addToPlaylist.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        PlaylistManager.addSongToPlaylist(song);
+                    }
+                });
+                hbox.getChildren().addAll(imageView, seperator, new Label(song.getTitle()), addToPlaylist);
+                songResultsList.getItems().add(hbox);
             }
         }
     }

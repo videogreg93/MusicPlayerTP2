@@ -1,6 +1,7 @@
 package main.MusicServices;
 
 import main.Song.Song;
+import main.Song.SongBuilder;
 
 import java.util.ArrayList;
 
@@ -10,9 +11,14 @@ public class ExampleService implements ServiceInterface {
 
     public ExampleService() {
         songs = new ArrayList<Song>();
-        songs.add(new Song("People are Strange"));
-        songs.add(new Song("Sweet Child O' Mine"));
-        songs.add(new Song("Let it Be"));
+        //songs.add(new Song("People are Strange"));
+        //songs.add(new Song("Sweet Child O' Mine"));
+        //songs.add(new Song("Let it Be"));
+        SongBuilder b = new SongBuilder();
+        songs.add(b.title("People are strange").imageUrl("/images/sample1.jpg").build());
+        songs.add(b.title("Sweet Child O' Mine").imageUrl("/images/sample2.jpg").build());
+        songs.add(b.title("Let it Be").imageUrl("/images/sample3.jpg").build());
+
     }
     @Override
     public void connect() {

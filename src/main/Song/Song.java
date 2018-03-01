@@ -1,19 +1,46 @@
 package main.Song;
 
 
+import javafx.scene.image.Image;
+
 import java.util.HashMap;
 
 public class Song {
+    Image image;
     HashMap<String,String> metadata = new HashMap<String, String>();
 
-    public Song() {metadata.put("title","untitled");}
+    public Song() {
+        metadata.put("title","untitled");
+        image = new Image("/images/default.png", true);
+    }
 
     public Song(String title) {
         metadata.put("title", title);
+        image = new Image("/images/default.png", true);
     }
+
+    // Setters
+
+    public void setMetadataValue(String key, String value) {
+        metadata.put(key,value);
+    }
+
+    public void setTitle(String title) {
+        setMetadataValue("title", title);
+    }
+
+    public void setImage(String url) {
+        image = new Image(url, true);
+    }
+
+    // Getters
 
     public String getTitle() {
         return getMetadataValue("title");
+    }
+
+    public Image getImage() {
+        return image;
     }
 
     public String getMetadataValue(String key) {

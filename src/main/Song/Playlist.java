@@ -3,7 +3,13 @@ package main.Song;
 import java.util.ArrayList;
 
 public class Playlist {
+    String name;
     ArrayList<Song> allSongs;
+
+    public Playlist(String name) {
+        this.name = name;
+        allSongs = new ArrayList<>();
+    }
 
 
     /**
@@ -11,6 +17,7 @@ public class Playlist {
      * @param song
      */
     public void addSong(Song song) {
+        // TODO check if song isnt already present
         allSongs.add(song);
     }
 
@@ -48,4 +55,12 @@ public class Playlist {
         this.allSongs = allSongs;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

@@ -18,7 +18,7 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-      <TabPane prefHeight="519.0" prefWidth="571.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="tabPane" prefHeight="519.0" prefWidth="571.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Search">
             <content>
@@ -33,7 +33,10 @@
           </Tab>
           <Tab text="Playlists">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0">
+                     <children>
+                        <JFXListView fx:id="playlistListView" layoutY="-2.0" prefHeight="490.0" prefWidth="571.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children></AnchorPane>
             </content>
           </Tab>
         </tabs>
