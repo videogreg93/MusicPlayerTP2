@@ -15,9 +15,21 @@ public class ExampleService implements ServiceInterface {
         //songs.add(new Song("Sweet Child O' Mine"));
         //songs.add(new Song("Let it Be"));
         SongBuilder b = new SongBuilder();
-        songs.add(b.title("People are strange").imageUrl("/images/sample1.jpg").build());
-        songs.add(b.title("Sweet Child O' Mine").imageUrl("/images/sample2.jpg").build());
-        songs.add(b.title("Let it Be").imageUrl("/images/sample3.jpg").build());
+        songs.add(
+                b.title("People are strange")
+                        .imageUrl("/images/sample1.jpg")
+                        .addMusicUri("/songs/song2.mp3")
+                        .build());
+        songs.add(b
+                .title("Sweet Child O' Mine")
+                .imageUrl("/images/sample2.jpg")
+                .addMusicUri("/songs/song2.mp3")
+                .build());
+        songs.add(b
+                .title("Let it Be")
+                .imageUrl("/images/sample3.jpg")
+                .addMusicUri("/songs/song3.mp3")
+                .build());
 
     }
     @Override

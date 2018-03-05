@@ -2,11 +2,14 @@ package main.Song;
 
 
 import javafx.scene.image.Image;
+import javafx.scene.media.Media;
 
+import java.net.URISyntaxException;
 import java.util.HashMap;
 
 public class Song {
     Image image;
+    Media music;
     HashMap<String,String> metadata = new HashMap<String, String>();
 
     public Song() {
@@ -33,6 +36,14 @@ public class Song {
         image = new Image(url, true);
     }
 
+    public void setMusic(String musicURI) {
+        try {
+            this.music = new Media(getClass().getResource(musicURI).toURI().toString());
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+    }
+
     // Getters
 
     public String getTitle() {
@@ -41,6 +52,10 @@ public class Song {
 
     public Image getImage() {
         return image;
+    }
+
+    public Media getMusic() {
+        return music;
     }
 
     public String getMetadataValue(String key) {

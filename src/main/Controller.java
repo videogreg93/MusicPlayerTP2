@@ -12,9 +12,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TabPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
+import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 import main.MusicServices.ExampleService;
 import main.Song.PlaylistManager;
 import main.Song.Song;
@@ -29,9 +32,15 @@ public class Controller {
     public JFXListView songResultsList;
     public TabPane tabPane;
     public JFXListView playlistListView;
+    public HBox currentlyPlaying;
+    public Button playButton;
+    public Button stopButton;
 
     // Services
     ExampleService exampleService = new ExampleService();
+
+    // Handle music playing
+    MediaPlayer mediaPlayer;
 
 
     @FXML
@@ -90,10 +99,65 @@ public class Controller {
                         PlaylistManager.addSongToPlaylist(song);
                     }
                 });
-                hbox.getChildren().addAll(imageView, seperator, new Label(song.getTitle()), addToPlaylist);
+                // Play Button
+                Button playSongButton = new Button("Play");
+                playSongButton.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        playSong(song);
+                    }
+                });
+                hbox.getChildren().addAll(imageView, seperator, new Label(song.getTitle()), addToPlaylist, playSongButton);
                 songResultsList.getItems().add(hbox);
             }
         }
+    }
+
+    private void playSong(Song song) {
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+        }
+        mediaPlayer = new MediaPlayer(song.getMusic());
+        mediaPlayer.setOnReady(new Runnable() {
+            @Override
+            public void run() {
+                // Setup hbox to show data
+                currentlyPlaying.getChildren().clear();
+                ImageView imageView = new ImageView(song.getImage());
+                imageView.setFitWidth(80);
+                imageView.setPreserveRatio(true);
+                String title = song.getTitle();
+                Region seperator = new Region();
+                HBox.setHgrow(seperator, Priority.ALWAYS);
+                // get song time
+                double millis = mediaPlayer.getTotalDuration().toMillis();
+                int minutes = (int) ((millis / 1000)  / 60);
+                int seconds = (int) ((millis / 1000) % 60);
+                String time = "00:00  /  " + minutes + ":" + seconds;
+                Label timeLabel = new Label(time);
+                currentlyPlaying.getChildren().addAll(imageView
+                        ,seperator,new Label(title), timeLabel);
+                // Set listener to update time
+                mediaPlayer.currentTimeProperty().addListener(new ChangeListener<Duration>() {
+                    @Override
+                    public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
+                        //TODO better formating
+                        double currentMillis = newValue.toMillis();
+                        int currentMinutes = (int) ((currentMillis / 1000)  / 60);
+                        int currentSeconds = (int) ((currentMillis / 1000) % 60);
+                        String total = currentMinutes + ":" + currentSeconds + "  /  " + minutes + ":" + seconds;
+                        timeLabel.setText(total);
+                    }
+                });
+                mediaPlayer.play();
+
+                // Update play button
+                playButton.setText("||");
+            }
+        });
+
+
+
     }
 
     /**
@@ -104,5 +168,39 @@ public class Controller {
         // Same thing as search button pressed, as long as its not disabled
         if (!searchButton.isDisabled())
             searchButtonPressed(actionEvent);
+    }
+
+    /**
+     * Method handling when a user clicks on a song from search results
+     * @param mouseEvent
+     */
+    public void onListItemClicked(MouseEvent mouseEvent) {
+
+    }
+
+    /**
+     * On stop button pressed, we stop the current song
+     * @param actionEvent
+     */
+    public void onStopPressed(ActionEvent actionEvent) {
+        if (mediaPlayer != null) {
+            mediaPlayer.stop();
+        }
+        playButton.setText(">");
+    }
+
+    public void onPlayPressed(ActionEvent actionEvent) {
+        if (mediaPlayer != null) {
+            MediaPlayer.Status status = mediaPlayer.getStatus();
+            if (status == MediaPlayer.Status.PLAYING) {
+                mediaPlayer.pause();
+                playButton.setText(">");
+            }
+            else {
+                mediaPlayer.play();
+                playButton.setText("||");
+            }
+
+        }
     }
 }

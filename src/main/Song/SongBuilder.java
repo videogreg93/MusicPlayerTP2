@@ -25,6 +25,11 @@ public class SongBuilder {
         return this;
     }
 
+    public SongBuilder addMusicUri(String uri) {
+        song.setMusic(uri);
+        return this;
+    }
+
     public Song build() {
         Song temp = song;
         destroy();
