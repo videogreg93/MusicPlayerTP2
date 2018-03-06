@@ -17,7 +17,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.media.MediaPlayer;
-import javafx.util.Duration;
 import main.MusicServices.ExampleService;
 import main.Song.PlaylistManager;
 import main.Song.Song;
@@ -35,6 +34,7 @@ public class Controller {
     public HBox currentlyPlaying;
     public Button playButton;
     public Button stopButton;
+    public JFXListView queueList;
 
     // Services
     ExampleService exampleService = new ExampleService();
@@ -54,8 +54,9 @@ public class Controller {
             }
         });
 
-
-        PlaylistManager.init(playlistListView);
+        // Init static classes
+        PlaylistManager.init(playlistListView, queueList);
+        SoundManager.initialize(currentlyPlaying, queueList);
 
         // Connect Services
         exampleService.connect();
@@ -104,7 +105,9 @@ public class Controller {
                 playSongButton.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
-                        playSong(song);
+                        SoundManager.playSingleSong(song);
+                        // Update play button
+                        playButton.setText("||");
                     }
                 });
                 hbox.getChildren().addAll(imageView, seperator, new Label(song.getTitle()), addToPlaylist, playSongButton);
@@ -113,52 +116,7 @@ public class Controller {
         }
     }
 
-    private void playSong(Song song) {
-        if (mediaPlayer != null) {
-            mediaPlayer.stop();
-        }
-        mediaPlayer = new MediaPlayer(song.getMusic());
-        mediaPlayer.setOnReady(new Runnable() {
-            @Override
-            public void run() {
-                // Setup hbox to show data
-                currentlyPlaying.getChildren().clear();
-                ImageView imageView = new ImageView(song.getImage());
-                imageView.setFitWidth(80);
-                imageView.setPreserveRatio(true);
-                String title = song.getTitle();
-                Region seperator = new Region();
-                HBox.setHgrow(seperator, Priority.ALWAYS);
-                // get song time
-                double millis = mediaPlayer.getTotalDuration().toMillis();
-                int minutes = (int) ((millis / 1000)  / 60);
-                int seconds = (int) ((millis / 1000) % 60);
-                String time = "00:00  /  " + minutes + ":" + seconds;
-                Label timeLabel = new Label(time);
-                currentlyPlaying.getChildren().addAll(imageView
-                        ,seperator,new Label(title), timeLabel);
-                // Set listener to update time
-                mediaPlayer.currentTimeProperty().addListener(new ChangeListener<Duration>() {
-                    @Override
-                    public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
-                        //TODO better formating
-                        double currentMillis = newValue.toMillis();
-                        int currentMinutes = (int) ((currentMillis / 1000)  / 60);
-                        int currentSeconds = (int) ((currentMillis / 1000) % 60);
-                        String total = currentMinutes + ":" + currentSeconds + "  /  " + minutes + ":" + seconds;
-                        timeLabel.setText(total);
-                    }
-                });
-                mediaPlayer.play();
 
-                // Update play button
-                playButton.setText("||");
-            }
-        });
-
-
-
-    }
 
     /**
      * Method handling when enter is pressed in the search bar
@@ -183,24 +141,16 @@ public class Controller {
      * @param actionEvent
      */
     public void onStopPressed(ActionEvent actionEvent) {
-        if (mediaPlayer != null) {
-            mediaPlayer.stop();
-        }
+        SoundManager.onStopPressed();
         playButton.setText(">");
     }
 
     public void onPlayPressed(ActionEvent actionEvent) {
-        if (mediaPlayer != null) {
-            MediaPlayer.Status status = mediaPlayer.getStatus();
-            if (status == MediaPlayer.Status.PLAYING) {
-                mediaPlayer.pause();
-                playButton.setText(">");
-            }
-            else {
-                mediaPlayer.play();
-                playButton.setText("||");
-            }
+        boolean isPlaying = SoundManager.onPlayPressed();
+        if (isPlaying)
+            playButton.setText("||");
+        else
+            playButton.setText(">");
 
-        }
     }
 }
