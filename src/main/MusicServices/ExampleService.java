@@ -15,6 +15,8 @@ public class ExampleService implements ServiceInterface {
         //songs.add(new Song("Sweet Child O' Mine"));
         //songs.add(new Song("Let it Be"));
         SongBuilder b = new SongBuilder();
+
+        /*
         songs.add(
                 b.title("People are strange")
                         .imageUrl("/images/sample1.jpg")
@@ -30,6 +32,8 @@ public class ExampleService implements ServiceInterface {
                 .imageUrl("/images/sample3.jpg")
                 .addMusicUri("/songs/song3.mp3")
                 .build());
+
+                */
 
     }
     @Override

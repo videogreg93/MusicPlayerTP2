@@ -14,12 +14,12 @@ public class Song {
 
     public Song() {
         metadata.put("title","untitled");
-        image = new Image("/images/default.png", true);
+        //image = new Image("/images/default.png", true);
     }
 
     public Song(String title) {
         metadata.put("title", title);
-        image = new Image("/images/default.png", true);
+        //image = new Image("/images/default.png", true);
     }
 
     // Setters
