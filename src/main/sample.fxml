@@ -43,6 +43,15 @@
                      </children></AnchorPane>
             </content>
           </Tab>
+            <Tab text="Queue">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <JFXListView fx:id="queueList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="615.0" prefWidth="682.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
         </tabs>
       </TabPane>
       <HBox fx:id="currentlyPlaying" prefHeight="73.0" prefWidth="588.0" spacing="20.0" GridPane.rowIndex="1">

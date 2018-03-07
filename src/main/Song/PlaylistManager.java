@@ -10,6 +10,7 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
+import main.SoundManager;
 import main.Utils;
 
 import java.util.ArrayList;
@@ -17,11 +18,14 @@ import java.util.Optional;
 
 public class PlaylistManager {
     public static ArrayList<Playlist> allPlaylists;
-    private static JFXListView playlistListView;
 
-    public static void init(JFXListView view) {
+    private static JFXListView playlistListView;
+    private static JFXListView queueListView;
+
+    public static void init(JFXListView view, JFXListView queue) {
         allPlaylists = new ArrayList<>();
         playlistListView = view;
+        queueListView = queue;
         refreshPlaylistView();
     }
 
@@ -73,15 +77,32 @@ public class PlaylistManager {
             String songCount = playlist.getAllSongs().size() + " songs";
             Region seperator = new Region();
             HBox.setHgrow(seperator, Priority.ALWAYS);
-            hbox.getChildren().addAll(new Label(playlist.getName()),seperator, new Label(songCount));
+            // Play playlist button
+            Button playButton = new Button("play all");
+            playButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    playPlaylist(playlist);
+                }
+            });
+            hbox.getChildren().addAll(new Label(playlist.getName()),seperator, new Label(songCount), playButton);
             playlistListView.getItems().add(hbox);
         }
+    }
+
+    /**
+     * Takes a playlist and adds it to the play queue. We can also use this as a central point to play any song,
+     * we just have to make a playlist with a single song on the fly.
+     * @param playlist the playlist to be played
+     */
+    public static void playPlaylist(Playlist playlist) {
+        SoundManager.playPlaylist(playlist);
     }
 
     public static void addSongToPlaylist(Song song) {
         // TODO add the option to directly create one right here
         if (allPlaylists.isEmpty())
-            Utils.ShowError("You don't have any playlists, start by reating one");
+            Utils.ShowError("You don't have any playlists, start by creating one");
         else {
             ChoiceDialog<Playlist> dialog = new ChoiceDialog<>(allPlaylists.get(0), allPlaylists);
             dialog.setTitle("Add to which playlist?");

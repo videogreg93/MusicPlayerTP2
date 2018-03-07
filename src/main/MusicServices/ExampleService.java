@@ -20,7 +20,7 @@ public class ExampleService implements ServiceInterface {
         songs.add(
                 b.title("People are strange")
                         .imageUrl("/images/sample1.jpg")
-                        .addMusicUri("/songs/song2.mp3")
+                        .addMusicUri("/songs/song5.wav")
                         .build());
         songs.add(b
                 .title("Sweet Child O' Mine")
