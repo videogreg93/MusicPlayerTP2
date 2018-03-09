@@ -1,6 +1,7 @@
 package main.MusicServices;
 
 import main.Song.Song;
+import main.Song.SongBuilder;
 
 import javax.json.Json;
 import javax.json.stream.JsonParser;
@@ -21,9 +22,6 @@ public class JamendoService implements ServiceInterface {
     public JamendoService() {
 
         songs = new ArrayList<Song>();
-        //songs.add(new Song("People are Strange"));
-        //songs.add(new Song("Sweet Child O' Mine"));
-        //songs.add(new Song("Let it Be"));
 
         //SongBuilder b = new SongBuilder();
 
@@ -33,14 +31,10 @@ public class JamendoService implements ServiceInterface {
                         .imageUrl("/images/sample1.jpg")
                         .addMusicUri("/songs/song5.wav")
                         .build());
-        songs.add(b
-                .title("Sweet Child O' Mine")
-                .imageUrl("/images/sample2.jpg")
-                .addMusicUri("/songs/song2.mp3")
-                .build());
 
                 */
     }
+
     @Override
     public void connect() {
         System.out.println("Connected!");
@@ -71,9 +65,7 @@ public class JamendoService implements ServiceInterface {
         URLConnection connection = null;
         InputStream response = null;
 
-        String temp = null;
-        String streamURL = null;
-        ArrayList<Song> results = new ArrayList<Song>();
+        songs.clear();
 
         try {
             callArguments = String.format("client_id=%s&format=%s&limit=%s&namesearch=%s",
@@ -92,55 +84,75 @@ public class JamendoService implements ServiceInterface {
             connection.setRequestProperty("Accept-Charset", "UTF-8");
             response = connection.getInputStream();
 
-            /*
-            event = parser.next(); // START_OBJECT
-            event = parser.next();       // KEY_NAME
-            event = parser.next();       // VALUE_STRING
-            event = parser.next(); temp = parser.getString();
-            event = parser.next(); temp = parser.getString();
-            event = parser.next(); temp = parser.getString();
-            event = parser.next(); temp = parser.getString();
-            event = parser.next(); temp = parser.getString();
-            event = parser.next(); temp = parser.getString();
-            event = parser.next(); temp = parser.getString();
-            event = parser.next();
-            event = parser.next();
-            event = parser.next();
-            event = parser.next();
-            event = parser.next();
-            event = parser.next();
-            event = parser.next();
-            event = parser.next();
-            event = parser.next();
-            event = parser.next(); temp = parser.getString();
-            event = parser.next(); temp = parser.getString(); // first track id
-            event = parser.next(); temp = parser.getString();
-            */
-
         } catch (IOException e) {
-
             e.printStackTrace();
         }
 
         parseResponse(response);
-
         return songs;
     }
 
 
     private void parseResponse(InputStream response) {
 
-        String temp = null;
+        String temp = "";
+        String title = "";
+        String imageUrl = "";
+        String songUri = "";
+
         JsonParser parser = Json.createParser(response);
-        JsonParser.Event event;
+        SongBuilder b = new SongBuilder();
 
-        event = parser.next(); // START_OBJECT
+        int count = 0;
+        int i = 0;
+
+        //Get the results count
+        while (!temp.equals("results_count")){
+            parser.next();
+            temp = parser.getString();
+        }
+        parser.next();
         temp = parser.getString();
+        count = Integer.parseInt(temp);
 
-        // to do...
+        if(count == 0)
+            return;
+
+        //Build a song for each result
+        while (i < count){
+
+            //Get the title
+            while (!temp.equals("name")){
+                parser.next();
+                temp = parser.getString();
+            }
+            parser.next();
+            title = parser.getString();
+
+            //Get the album cover url
+            while (!temp.equals("album_image")){
+                parser.next();
+                temp = parser.getString();
+            }
+            parser.next();
+            imageUrl = parser.getString();
+
+            //Get the file uri
+            while (!temp.equals("audio")){
+                parser.next();
+                temp = parser.getString();
+            }
+            parser.next();
+            songUri = parser.getString();
+
+            //Build the song and add it
+            songs.add(b.title(title).imageUrl(imageUrl).addMusicUri(songUri).build());
+
+            //Move on to next song
+            i++;
+        }
+
 
     }
-
-
 
 }
