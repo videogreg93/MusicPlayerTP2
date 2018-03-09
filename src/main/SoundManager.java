@@ -1,13 +1,15 @@
 package main;
 
 import com.jfoenix.controls.JFXListView;
+import com.jfoenix.controls.JFXSlider;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
-import javafx.scene.layout.Region;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 import main.Song.Playlist;
@@ -22,6 +24,9 @@ public class SoundManager {
 
     private static HBox currentlyPlayingView;
     private static JFXListView queueListView;
+
+    // Handle seeking
+    private static boolean isSeeking = false;
 
     public static void initialize(HBox currently, JFXListView queue) {
         currentlyPlayingView = currently;
@@ -42,16 +47,36 @@ public class SoundManager {
                 imageView.setFitWidth(80);
                 imageView.setPreserveRatio(true);
                 String title = song.getTitle();
-                Region seperator = new Region();
-                HBox.setHgrow(seperator, Priority.ALWAYS);
+                //Region seperator = new Region();
+                //HBox.setHgrow(seperator, Priority.ALWAYS);
+
                 // get song time
                 double millis = mediaPlayer.getTotalDuration().toMillis();
                 int minutes = (int) ((millis / 1000)  / 60);
                 int seconds = (int) ((millis / 1000) % 60);
                 String time = "00:00  /  " + minutes + ":" + seconds;
                 Label timeLabel = new Label(time);
+                // Seekbar
+                JFXSlider seekbar = new JFXSlider(0, mediaPlayer.getTotalDuration().toSeconds() - 2,0 );
+                seekbar.setOnMousePressed(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        System.out.println("Clicked");
+                        isSeeking = true;
+
+                    }
+                });
+                seekbar.setOnMouseReleased(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        System.out.println("Released");
+                        mediaPlayer.seek(new Duration(seekbar.getValue() * 1000));
+                        isSeeking = false;
+                    }
+                });
+                HBox.setHgrow(seekbar, Priority.ALWAYS);
                 currentlyPlayingView.getChildren().addAll(imageView
-                        ,seperator,new Label(title), timeLabel);
+                        ,seekbar,new Label(title), timeLabel);
                 // Set listener to update time
                 mediaPlayer.currentTimeProperty().addListener(new ChangeListener<Duration>() {
                     @Override
@@ -62,6 +87,10 @@ public class SoundManager {
                         int currentSeconds = (int) ((currentMillis / 1000) % 60);
                         String total = currentMinutes + ":" + currentSeconds + "  /  " + minutes + ":" + seconds;
                         timeLabel.setText(total);
+                        // update seekbar if we're not currently seeking a new position
+                        if (!isSeeking) {
+                            seekbar.setValue(newValue.toSeconds());
+                        }
                     }
                 });
                 mediaPlayer.play();

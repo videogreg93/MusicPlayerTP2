@@ -3,16 +3,19 @@ package main.Song;
 import com.jfoenix.controls.JFXListView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceDialog;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import main.SoundManager;
 import main.Utils;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -77,6 +80,15 @@ public class PlaylistManager {
             String songCount = playlist.getAllSongs().size() + " songs";
             Region seperator = new Region();
             HBox.setHgrow(seperator, Priority.ALWAYS);
+            // Delete playlist button
+            Button deletePlaylistButton = new Button("Delete");
+            deletePlaylistButton.setStyle(" -fx-base: #F31431;");
+            deletePlaylistButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    PlaylistManager.deletePlaylist(playlist);
+                }
+            });
             // Play playlist button
             Button playButton = new Button("play all");
             playButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -85,9 +97,12 @@ public class PlaylistManager {
                     playPlaylist(playlist);
                 }
             });
-            hbox.getChildren().addAll(new Label(playlist.getName()),seperator, new Label(songCount), playButton);
+            hbox.getChildren().addAll(new Label(playlist.getName()),seperator, new Label(songCount), playButton, deletePlaylistButton);
             playlistListView.getItems().add(hbox);
+
+
         }
+        savePlaylists();
     }
 
     /**
@@ -117,15 +132,61 @@ public class PlaylistManager {
         }
     }
 
-    public static void deletePlaylist() {
+    /**
+     * Delets the playlist
+     * @param playlist the playlist to be deleted
+     */
+    public static void deletePlaylist(Playlist playlist) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete Playlist");
+        alert.setHeaderText(playlist.getName());
+        alert.setContentText("Are you sure you want to delete this playlist?");
 
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            allPlaylists.remove(playlist);
+            refreshPlaylistView();
+        }
     }
 
+    /**
+     * Called upon startup, loads the playlists from file
+     */
     public static void loadPlaylists() {
 
     }
 
+    /**
+     * Saves the current playlists to disk. Called everytime the
+     * list of playlists is modified
+     */
     public static void savePlaylists() {
-
+       // if (allPlaylists.isEmpty())
+         //   return;
+        JSONObject fileObject = new JSONObject();
+        for (Playlist playlist : allPlaylists) {
+            JSONArray allSongs = new JSONArray();
+            for (Song song : playlist.allSongs) {
+                JSONObject object = new JSONObject();
+                // Add image and picture url
+                object.put("image", song.getImage().impl_getUrl());
+                object.put("music", song.getMusic().getSource());
+                for (String key: song.metadata.keySet()) {
+                    object.put(key, song.getMetadataValue(key));
+                }
+                allSongs.put(object);
+            }
+            fileObject.put(playlist.name, allSongs );
+        }
+        // Save to disk
+        File file = new File("./playlists.json");
+        try {
+            PrintWriter writer = new PrintWriter(new FileOutputStream(file, false));
+            writer.write(fileObject.toString());
+            writer.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        System.out.println(file.toString());
     }
 }

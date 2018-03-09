@@ -19,6 +19,7 @@ public class Playlist {
     public void addSong(Song song) {
         // TODO check if song isnt already present
         allSongs.add(song);
+        PlaylistManager.refreshPlaylistView();
     }
 
     /**
@@ -29,8 +30,11 @@ public class Playlist {
     public void addSong(Song song, int atPosition) {
         if (atPosition > allSongs.size()) {
             System.out.println("Error: Index out of bounds");
+        } else {
+            allSongs.add(atPosition, song);
+            PlaylistManager.refreshPlaylistView();
         }
-        allSongs.add(atPosition, song);
+
     }
 
     /**
