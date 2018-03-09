@@ -12,10 +12,7 @@ import main.Utils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -29,6 +26,7 @@ public class PlaylistManager {
         allPlaylists = new ArrayList<>();
         playlistListView = view;
         queueListView = queue;
+        loadPlaylists();
         refreshPlaylistView();
     }
 
@@ -153,7 +151,33 @@ public class PlaylistManager {
      * Called upon startup, loads the playlists from file
      */
     public static void loadPlaylists() {
-
+        File file = new File("./playlists.json");
+        if (file.exists()) {
+            try {
+                FileReader fr = new FileReader(file);
+                LineNumberReader lnr = new LineNumberReader(fr);
+                JSONObject playlists = new JSONObject(lnr.readLine());
+                for (String key: playlists.keySet()) {
+                    JSONArray allSongs = playlists.getJSONArray(key);
+                    Playlist newPlaylist = new Playlist(key);
+                    for (Object songObject : allSongs) {
+                        JSONObject song = (JSONObject) songObject;
+                        SongBuilder builder = new SongBuilder();
+                        builder.title(song.getString("title"))
+                                .addMusicUriFullPath(song.getString("music"))
+                                .imageUrl(song.getString("image"));
+                        for (String data: song.keySet()) {
+                            builder.addMetadata(data, song.getString(data));
+                        }
+                        newPlaylist.addSong(builder.build());
+                    }
+                    allPlaylists.add(newPlaylist);
+                }
+                refreshPlaylistView();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**

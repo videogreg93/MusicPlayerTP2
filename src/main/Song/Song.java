@@ -4,7 +4,6 @@ package main.Song;
 import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 
-import java.net.URISyntaxException;
 import java.util.HashMap;
 
 public class Song {
@@ -39,9 +38,13 @@ public class Song {
     public void setMusic(String musicURI) {
         try {
             this.music = new Media(getClass().getResource(musicURI).toURI().toString());
-        } catch (URISyntaxException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void setMusicFullPath(String uri) {
+        this.music = new Media(uri);
     }
 
     // Getters
@@ -62,6 +65,10 @@ public class Song {
         return metadata.getOrDefault(key, "no " + key + " found");
     }
 
+    public String getMetadataValue(String key, String defaultValue) {
+        return metadata.getOrDefault(key, defaultValue);
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
@@ -72,5 +79,10 @@ public class Song {
             builder.append("\n");
         }
         return builder.toString();
+    }
+
+
+    public HashMap<String, String> getMetadata() {
+        return metadata;
     }
 }

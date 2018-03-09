@@ -67,4 +67,24 @@ public class Playlist {
     public String toString() {
         return name;
     }
+
+    public void removeSong(Song song) {
+        allSongs.remove(song);
+    }
+
+    public void moveUpSong(Song song) {
+        int currentIndex = allSongs.indexOf(song);
+        if (currentIndex == 0)
+            return;
+        allSongs.remove(currentIndex);
+        allSongs.add(currentIndex - 1, song);
+    }
+
+    public void moveDownSong(Song song) {
+        int currentIndex = allSongs.indexOf(song);
+        if (currentIndex == allSongs.size() - 1)
+            return;
+        allSongs.remove(currentIndex);
+        allSongs.add(currentIndex + 1, song);
+    }
 }

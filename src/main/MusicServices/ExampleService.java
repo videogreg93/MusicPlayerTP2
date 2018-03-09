@@ -63,6 +63,7 @@ public class ExampleService implements ServiceInterface {
         query = query.toLowerCase();
         ArrayList<Song> results = new ArrayList<Song>();
         for (Song song : songs) {
+            // TODO should actually check all of metadata, like album name, artist name, etc.
             if (song.getTitle().toLowerCase().contains(query))
                 results.add(song);
         }
