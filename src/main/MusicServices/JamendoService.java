@@ -101,6 +101,7 @@ public class JamendoService implements ServiceInterface {
         String songUri = "";
 
         JsonParser parser = Json.createParser(response);
+        JsonParser.Event event;
         SongBuilder b = new SongBuilder();
 
         int count = 0;
@@ -108,12 +109,12 @@ public class JamendoService implements ServiceInterface {
 
         //Get the results count
         while (!temp.equals("results_count")){
-            parser.next();
-            temp = parser.getString();
+            event = parser.next();
+            if(event == JsonParser.Event.KEY_NAME)
+                temp = parser.getString();
         }
         parser.next();
-        temp = parser.getString();
-        count = Integer.parseInt(temp);
+        count = parser.getInt();
 
         if(count == 0)
             return;
@@ -123,24 +124,27 @@ public class JamendoService implements ServiceInterface {
 
             //Get the title
             while (!temp.equals("name")){
-                parser.next();
-                temp = parser.getString();
+                event = parser.next();
+                if(event == JsonParser.Event.KEY_NAME)
+                    temp = parser.getString();
             }
             parser.next();
             title = parser.getString();
 
             //Get the album cover url
             while (!temp.equals("album_image")){
-                parser.next();
-                temp = parser.getString();
+                event = parser.next();
+                if(event == JsonParser.Event.KEY_NAME)
+                    temp = parser.getString();
             }
             parser.next();
             imageUrl = parser.getString();
 
             //Get the file uri
             while (!temp.equals("audio")){
-                parser.next();
-                temp = parser.getString();
+                event = parser.next();
+                if(event == JsonParser.Event.KEY_NAME)
+                    temp = parser.getString();
             }
             parser.next();
             songUri = parser.getString();

@@ -4,7 +4,6 @@ package main.Song;
 import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 
-import java.net.URISyntaxException;
 import java.util.HashMap;
 
 public class Song {
@@ -36,13 +35,7 @@ public class Song {
         image = new Image(url, true);
     }
 
-    public void setMusic(String musicURI) {
-        try {
-            this.music = new Media(getClass().getResource(musicURI).toURI().toString());
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
-    }
+    public void setMusic(String musicURI) { music = new Media(musicURI.toString()); }
 
     // Getters
 
