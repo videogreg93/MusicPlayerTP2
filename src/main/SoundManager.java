@@ -198,7 +198,7 @@ public class SoundManager {
                 public void handle(ActionEvent event) {
                     currentQueue.removeSong(song);
                     refreshQueueView();
-                    
+
                 }
             });
             MenuItem moveUp = new MenuItem("Move up in queue");
