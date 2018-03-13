@@ -30,6 +30,11 @@ public class SongBuilder {
         return this;
     }
 
+    public SongBuilder addMusicUriFullPath(String uri) {
+        song.setMusicFullPath(uri);
+        return this;
+    }
+
     public Song build() {
         Song temp = song;
         destroy();

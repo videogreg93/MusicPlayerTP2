@@ -13,12 +13,12 @@ public class Song {
 
     public Song() {
         metadata.put("title","untitled");
-        //image = new Image("/images/default.png", true);
+        image = new Image("/images/default.png", true);
     }
 
     public Song(String title) {
         metadata.put("title", title);
-        //image = new Image("/images/default.png", true);
+        image = new Image("/images/default.png", true);
     }
 
     // Setters
@@ -35,7 +35,17 @@ public class Song {
         image = new Image(url, true);
     }
 
-    public void setMusic(String musicURI) { music = new Media(musicURI.toString()); }
+    public void setMusic(String musicURI) {
+        try {
+            this.music = new Media(getClass().getResource(musicURI).toURI().toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setMusicFullPath(String uri) {
+        this.music = new Media(uri);
+    }
 
     // Getters
 
@@ -55,6 +65,10 @@ public class Song {
         return metadata.getOrDefault(key, "no " + key + " found");
     }
 
+    public String getMetadataValue(String key, String defaultValue) {
+        return metadata.getOrDefault(key, defaultValue);
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
@@ -65,5 +79,10 @@ public class Song {
             builder.append("\n");
         }
         return builder.toString();
+    }
+
+
+    public HashMap<String, String> getMetadata() {
+        return metadata;
     }
 }

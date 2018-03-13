@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -64,6 +65,16 @@ public class Controller {
         // Connect Services
         //exampleService.connect();
         //exampleService.authenticate();
+
+        // Setup certain event handlers
+        queueList.getSelectionModel().getSelectedItems().addListener(new ListChangeListener() {
+            @Override
+            public void onChanged(Change c) {
+                int index = queueList.getSelectionModel().getSelectedIndex();
+                SoundManager.playSong(index);
+                System.out.println(index);
+            }
+        });
 
     }
 

@@ -18,19 +18,22 @@ public class ExampleService implements ServiceInterface {
 
         /*
         songs.add(
-                b.title("People are strange")
+                b.title("A New Beginning")
                         .imageUrl("/images/sample1.jpg")
-                        .addMusicUri("/songs/song5.wav")
+                        .addMusicUri("/songs/song1.mp3")
+                        .addMetadata("artist", "Timebomb Trend")
                         .build());
         songs.add(b
-                .title("Sweet Child O' Mine")
+                .title("Hometown")
                 .imageUrl("/images/sample2.jpg")
                 .addMusicUri("/songs/song2.mp3")
+                .addMetadata("artist", "Timebomb Trend")
                 .build());
         songs.add(b
-                .title("Let it Be")
-                .imageUrl("/images/sample3.jpg")
+                .title("Mr. Cactus Says No")
+                .imageUrl("/images/sample2.jpg")
                 .addMusicUri("/songs/song3.mp3")
+                .addMetadata("artist", "Timebomb Trend")
                 .build());
 
                 */
@@ -64,6 +67,7 @@ public class ExampleService implements ServiceInterface {
         query = query.toLowerCase();
         ArrayList<Song> results = new ArrayList<Song>();
         for (Song song : songs) {
+            // TODO should actually check all of metadata, like album name, artist name, etc.
             if (song.getTitle().toLowerCase().contains(query))
                 results.add(song);
         }
