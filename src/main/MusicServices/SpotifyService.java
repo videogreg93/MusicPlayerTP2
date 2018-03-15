@@ -31,9 +31,9 @@ public class SpotifyService implements ServiceInterface {
 	private static final ClientCredentialsRequest clientCredentialsRequest = spotifyApi.clientCredentials()
 	          .build();
 	
-	private ArrayList<Song> songs;
+	private ArrayList<Song> songs = new ArrayList<Song>();
 
-	public static void clientCredentials_Async() {
+	public static void clientCredentialsAsync() {
 	    try {
 	      final Future<ClientCredentials> clientCredentialsFuture = clientCredentialsRequest.executeAsync();
 
@@ -63,7 +63,7 @@ public class SpotifyService implements ServiceInterface {
 	@Override
 	public void connect() {
 		// TODO Auto-generated method stub
-		
+		clientCredentialsAsync();
 	}
 
 	@Override
@@ -102,8 +102,10 @@ public class SpotifyService implements ServiceInterface {
 			String title = t.getName();
 			String id = t.getId();
 			String imageUrl = t.getAlbum().getImages()[1].getUrl();
-			String trackUrl = t.getPreviewUrl()
-			songs.add(songBuilder.title(title).imageUrl(imageUrl).addMusicUri(trackUrl).build());		
+			String trackUrl = t.getPreviewUrl();
+		    System.out.println(title + " " + imageUrl + " " + trackUrl);
+		    if(title != null && imageUrl != null && trackUrl != null)
+		    	songs.add(songBuilder.title(title).imageUrl(imageUrl).addMusicUri(trackUrl).build());		
 		}
 	}
 }

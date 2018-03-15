@@ -18,6 +18,7 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.media.MediaPlayer;
 import main.MusicServices.ExampleService;
+import main.MusicServices.SpotifyService;
 import main.Song.PlaylistManager;
 import main.Song.Song;
 
@@ -37,7 +38,7 @@ public class Controller {
     public JFXListView queueList;
 
     // Services
-    ExampleService exampleService = new ExampleService();
+    SpotifyService spotifyService = new SpotifyService();
 
     // Handle music playing
     MediaPlayer mediaPlayer;
@@ -59,8 +60,8 @@ public class Controller {
         SoundManager.initialize(currentlyPlaying, queueList);
 
         // Connect Services
-        exampleService.connect();
-        exampleService.authenticate();
+        spotifyService.connect();
+        spotifyService.authenticate();
 
     }
 
@@ -73,7 +74,7 @@ public class Controller {
         // Get search query
         String query = searchBarTextField.getText();
         searchBarTextField.clear();
-        ArrayList<Song> results = exampleService.getSongs(query);
+        ArrayList<Song> results = spotifyService.getSongs(query);
         songResultsList.getItems().clear();
         if (results != null)  {
             if (results.isEmpty()) {
