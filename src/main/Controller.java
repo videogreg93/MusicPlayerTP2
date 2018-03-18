@@ -18,6 +18,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.media.MediaPlayer;
+
+import main.MusicServices.DeezerService;
 import main.MusicServices.JamendoService;
 import main.Song.PlaylistManager;
 import main.Song.Song;
@@ -42,6 +44,7 @@ public class Controller {
     // Services
     //ExampleService exampleService = new ExampleService();
     JamendoService jamendoService = new JamendoService();
+    DeezerService deezerService = new DeezerService();
 
     // Handle music playing
     MediaPlayer mediaPlayer;
@@ -88,7 +91,7 @@ public class Controller {
         String query = searchBarTextField.getText();
         searchBarTextField.clear();
         //ArrayList<Song> results = exampleService.getSongs(query);
-        ArrayList<Song> results = jamendoService.getSongs(query);
+        ArrayList<Song> results = deezerService.getSongs(query);
         songResultsList.getItems().clear();
         if (results != null)  {
             if (results.isEmpty()) {
