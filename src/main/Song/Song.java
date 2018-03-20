@@ -37,6 +37,7 @@ public class Song {
 
     public void setMusic(String musicURI) {
         try {
+            musicURI = musicURI.replace("https","http");
             this.music = new Media(musicURI);
         } catch (Exception e) {
             e.printStackTrace();

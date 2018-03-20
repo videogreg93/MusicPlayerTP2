@@ -1,5 +1,6 @@
 package main;
 
+import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
 import javafx.beans.value.ChangeListener;
@@ -40,6 +41,8 @@ public class Controller {
     public Button playButton;
     public Button stopButton;
     public JFXListView queueList;
+    public JFXCheckBox jamendoCheckbox;
+    public JFXCheckBox deezerCheckbox;
 
     // Services
     //ExampleService exampleService = new ExampleService();
@@ -90,12 +93,15 @@ public class Controller {
         // Get search query
         String query = searchBarTextField.getText();
         searchBarTextField.clear();
-        //ArrayList<Song> results = exampleService.getSongs(query);
-        ArrayList<Song> results = deezerService.getSongs(query);
+        ArrayList<Song> results = new ArrayList<>();
+        if (jamendoCheckbox.isSelected())
+            results = jamendoService.getSongs(query);
+        if (deezerCheckbox.isSelected())
+            results.addAll(deezerService.getSongs(query));
         songResultsList.getItems().clear();
         if (results != null)  {
             if (results.isEmpty()) {
-                Utils.ShowError("No songs found");
+                Utils.ShowError("No songs found. Make sure at least one service is checked under the searchbar.");
             }
 
             for (Song song : results) {

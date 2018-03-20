@@ -60,7 +60,7 @@ public class DeezerService implements ServiceInterface {
         String callArguments = null;
         String fullCall = null;
         String format = "JSONP";
-        String limit = "100";
+        String limit = "30";
 
         URLConnection connection = null;
         InputStream response = null;
