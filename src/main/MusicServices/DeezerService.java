@@ -98,14 +98,14 @@ public class DeezerService implements ServiceInterface {
         String title = "";
         String imageUrl = "";
         String songUri = "";
+        String artist = "";
 
         JsonParser parser = Json.createParser(response);
         JsonParser.Event event;
         SongBuilder b = new SongBuilder();
-        Boolean endOfFile = false;
 
         //Build a song for each result
-        while (!endOfFile){
+        while (parser.hasNext()){
 
             //Get the title
             while (!temp.equals("title") && parser.hasNext()){
@@ -128,6 +128,15 @@ public class DeezerService implements ServiceInterface {
             parser.next();
             songUri = parser.getString();
 
+            //Get the artist name
+            while (!temp.equals("name")){
+                event = parser.next();
+                if(event == JsonParser.Event.KEY_NAME)
+                    temp = parser.getString();
+            }
+            parser.next();
+            artist = parser.getString();
+
             //Get the album cover url
             while (!temp.equals("cover_medium")){
                 event = parser.next();
@@ -138,7 +147,7 @@ public class DeezerService implements ServiceInterface {
             imageUrl = parser.getString();
 
             //Build the song and add it
-            songs.add(b.title(title).imageUrl(imageUrl).addMusicUri(songUri).build());
+            songs.add(b.title(title).imageUrl(imageUrl).addMetadata("artist", artist).addMusicUri(songUri).build());
 
         }
 

@@ -99,6 +99,7 @@ public class JamendoService implements ServiceInterface {
         String title = "";
         String imageUrl = "";
         String songUri = "";
+        String artist = "";
 
         JsonParser parser = Json.createParser(response);
         JsonParser.Event event;
@@ -131,6 +132,15 @@ public class JamendoService implements ServiceInterface {
             parser.next();
             title = parser.getString();
 
+            //Get the artist
+            while (!temp.equals("artist_name")){
+                event = parser.next();
+                if(event == JsonParser.Event.KEY_NAME)
+                    temp = parser.getString();
+            }
+            parser.next();
+            artist = parser.getString();
+
             //Get the album cover url
             while (!temp.equals("album_image")){
                 event = parser.next();
@@ -150,7 +160,7 @@ public class JamendoService implements ServiceInterface {
             songUri = parser.getString();
 
             //Build the song and add it
-            songs.add(b.title(title).imageUrl(imageUrl).addMusicUri(songUri).build());
+            songs.add(b.title(title).imageUrl(imageUrl).addMetadata("artist", artist).addMusicUri(songUri).build());
 
             //Move on to next song
             i++;
