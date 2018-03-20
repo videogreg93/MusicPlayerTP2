@@ -45,7 +45,6 @@ public class Controller {
     public JFXCheckBox deezerCheckbox;
 
     // Services
-    //ExampleService exampleService = new ExampleService();
     JamendoService jamendoService = new JamendoService();
     DeezerService deezerService = new DeezerService();
 
@@ -67,10 +66,6 @@ public class Controller {
         // Init static classes
         PlaylistManager.init(playlistListView, queueList);
         SoundManager.initialize(currentlyPlaying, queueList);
-
-        // Connect Services
-        //exampleService.connect();
-        //exampleService.authenticate();
 
         // Setup certain event handlers
         queueList.getSelectionModel().getSelectedItems().addListener(new ListChangeListener() {

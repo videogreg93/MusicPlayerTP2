@@ -17,22 +17,10 @@ public class DeezerService implements ServiceInterface {
 
     ArrayList<Song> songs;
     boolean isConnected = false;
-    //static final String client_id = "687772c1";
 
     public DeezerService() {
 
         songs = new ArrayList<Song>();
-
-        //SongBuilder b = new SongBuilder();
-
-        /*
-        songs.add(
-                b.title("People are strange")
-                        .imageUrl("/images/sample1.jpg")
-                        .addMusicUri("/songs/song5.wav")
-                        .build());
-
-                */
     }
 
     @Override
@@ -53,6 +41,11 @@ public class DeezerService implements ServiceInterface {
         isConnected = false;
     }
 
+    /**
+     *Retrieves all songs from Deezer matching the query.
+     * @param query string contained in the song's title
+     * @return  songs matching the query
+     */
     @Override
     public ArrayList<Song> getSongs(String query) {
 
@@ -91,7 +84,10 @@ public class DeezerService implements ServiceInterface {
         return songs;
     }
 
-
+    /**
+     *Parse the json response received from Deezer
+     * @param response InputStream containing the json file to be parsed
+     */
     private void parseResponse(InputStream response) {
 
         String temp = "";

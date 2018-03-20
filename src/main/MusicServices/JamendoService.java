@@ -22,17 +22,6 @@ public class JamendoService implements ServiceInterface {
     public JamendoService() {
 
         songs = new ArrayList<Song>();
-
-        //SongBuilder b = new SongBuilder();
-
-        /*
-        songs.add(
-                b.title("People are strange")
-                        .imageUrl("/images/sample1.jpg")
-                        .addMusicUri("/songs/song5.wav")
-                        .build());
-
-                */
     }
 
     @Override
@@ -53,6 +42,12 @@ public class JamendoService implements ServiceInterface {
         isConnected = false;
     }
 
+
+    /**
+     *Retrieves all songs from Jamendo matching the query.
+     * @param query string contained in the song's title
+     * @return  songs matching the query
+     */
     @Override
     public ArrayList<Song> getSongs(String query) {
 
@@ -93,6 +88,10 @@ public class JamendoService implements ServiceInterface {
     }
 
 
+    /**
+     *Parse the json response received from Jamendo
+     * @param response InputStream containing the json file to be parsed
+     */
     private void parseResponse(InputStream response) {
 
         String temp = "";
