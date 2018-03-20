@@ -12,6 +12,7 @@ import com.wrapper.spotify.SpotifyApi;
 import com.neovisionaries.i18n.CountryCode;
 import com.wrapper.spotify.model_objects.credentials.ClientCredentials;
 import com.wrapper.spotify.model_objects.specification.Album;
+import com.wrapper.spotify.model_objects.specification.ArtistSimplified;
 import com.wrapper.spotify.model_objects.specification.Image;
 import com.wrapper.spotify.model_objects.specification.Track;
 import com.wrapper.spotify.model_objects.specification.Paging;
@@ -103,9 +104,15 @@ public class SpotifyService implements ServiceInterface {
 			String id = t.getId();
 			String imageUrl = t.getAlbum().getImages()[1].getUrl();
 			String trackUrl = t.getPreviewUrl();
-		    System.out.println(title + " " + imageUrl + " " + trackUrl);
+			ArtistSimplified[] artistsList = t.getArtists();
+			String artists = "";
+			for(ArtistSimplified a : artistsList)
+			{
+				artists += a.getName() + "; ";
+			}
+		    System.out.println(title + " " + imageUrl + " " + trackUrl + " " + artists);
 		    if(title != null && imageUrl != null && trackUrl != null)
-		    	songs.add(songBuilder.title(title).imageUrl(imageUrl).addMusicUri(trackUrl).build());		
+		    	songs.add(songBuilder.title(title).imageUrl(imageUrl).addMusicUri(trackUrl).addMetadata("Artist", artists).build());		
 		}
 	}
 }
