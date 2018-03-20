@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
@@ -30,7 +31,10 @@
                      <children>
                         <JFXTextField fx:id="searchBarTextField" layoutY="14.0" maxWidth="494.0" onAction="#onSearchBarEnterPressed" prefHeight="27.0" prefWidth="494.0" AnchorPane.leftAnchor="13.0" />
                         <Button fx:id="searchButton" disable="true" layoutX="542.0" layoutY="15.0" mnemonicParsing="false" onAction="#searchButtonPressed" prefHeight="25.0" prefWidth="67.0" text="Search" AnchorPane.rightAnchor="14.0" />
-                        <JFXListView fx:id="songResultsList" layoutX="13.0" layoutY="57.0" onMouseClicked="#onListItemClicked" prefHeight="525.0" prefWidth="580.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="57.0" />
+                        <JFXListView fx:id="songResultsList" layoutX="13.0" layoutY="86.0" onMouseClicked="#onListItemClicked" prefHeight="514.0" prefWidth="654.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="86.0" />
+                        <JFXCheckBox fx:id="jamendoCheckbox" layoutX="14.0" layoutY="55.0" text="Jamendo" AnchorPane.leftAnchor="14.0" />
+                        <JFXCheckBox fx:id="deezerCheckbox" layoutX="107.0" layoutY="55.0" text="Deezer" AnchorPane.leftAnchor="107.0" />
+                        <JFXCheckBox fx:id="spotifyCheckbox" layoutX="190.0" layoutY="55.0" text="Spotify" AnchorPane.leftAnchor="190.0" />
                      </children>
                   </AnchorPane>
             </content>

@@ -147,7 +147,7 @@ public class DeezerService implements ServiceInterface {
             imageUrl = parser.getString();
 
             //Build the song and add it
-            songs.add(b.title(title).imageUrl(imageUrl).addMetadata("Artist", artist).addMusicUri(songUri).build());
+            songs.add(b.title(title).imageUrl(imageUrl).addMetadata("artist", artist).addMusicUri(songUri).build());
 
         }
 

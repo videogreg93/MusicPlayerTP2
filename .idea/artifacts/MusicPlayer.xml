@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="MusicPlayer">
+    <output-path>$PROJECT_DIR$/out/artifacts/MusicPlayer</output-path>
+    <root id="root">
+      <element id="archive" name="MusicPlayer.jar">
+        <element id="module-output" name="MusicPlayer" />
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

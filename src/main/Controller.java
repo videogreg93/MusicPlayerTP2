@@ -22,6 +22,8 @@ import javafx.scene.media.MediaPlayer;
 
 import main.MusicServices.DeezerService;
 import main.MusicServices.JamendoService;
+import main.MusicServices.ExampleService;
+import main.MusicServices.SpotifyService;
 import main.Song.PlaylistManager;
 import main.Song.Song;
 
@@ -43,11 +45,14 @@ public class Controller {
     public JFXListView queueList;
     public JFXCheckBox jamendoCheckbox;
     public JFXCheckBox deezerCheckbox;
+    public JFXCheckBox spotifyCheckbox;
 
     // Services
     //ExampleService exampleService = new ExampleService();
     JamendoService jamendoService = new JamendoService();
     DeezerService deezerService = new DeezerService();
+    SpotifyService spotifyService = new SpotifyService();
+
 
     // Handle music playing
     MediaPlayer mediaPlayer;
@@ -69,8 +74,8 @@ public class Controller {
         SoundManager.initialize(currentlyPlaying, queueList);
 
         // Connect Services
-        //exampleService.connect();
-        //exampleService.authenticate();
+        spotifyService.connect();
+        spotifyService.authenticate();
 
         // Setup certain event handlers
         queueList.getSelectionModel().getSelectedItems().addListener(new ListChangeListener() {
@@ -81,6 +86,7 @@ public class Controller {
                 System.out.println(index);
             }
         });
+
 
     }
 
@@ -98,6 +104,8 @@ public class Controller {
             results = jamendoService.getSongs(query);
         if (deezerCheckbox.isSelected())
             results.addAll(deezerService.getSongs(query));
+        if (spotifyCheckbox.isSelected())
+            results.addAll(spotifyService.getSongs(query));
         songResultsList.getItems().clear();
         if (results != null)  {
             if (results.isEmpty()) {
