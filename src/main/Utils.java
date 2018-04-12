@@ -7,6 +7,10 @@ import javafx.scene.control.Alert;
  */
 public class Utils {
 
+    /**
+     * Global function for showing errors
+     * @param message
+     */
     public static void ShowError(String message) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Error");

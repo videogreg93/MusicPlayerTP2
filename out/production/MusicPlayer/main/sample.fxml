@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="center" hgap="10" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="750.0" prefWidth="682.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller">
+<GridPane alignment="center" hgap="10" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="1000.0" prefWidth="1000.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Controller">
    <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints />
@@ -23,15 +23,15 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-      <TabPane fx:id="tabPane" prefHeight="651.0" prefWidth="608.0" tabClosingPolicy="UNAVAILABLE" GridPane.columnSpan="2">
+      <TabPane fx:id="tabPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="651.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE" GridPane.columnSpan="2" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
         <tabs>
           <Tab text="Search">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0">
+              <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefWidth="912.0">
                      <children>
                         <JFXTextField fx:id="searchBarTextField" layoutY="14.0" maxWidth="494.0" onAction="#onSearchBarEnterPressed" prefHeight="27.0" prefWidth="494.0" AnchorPane.leftAnchor="13.0" />
                         <Button fx:id="searchButton" disable="true" layoutX="542.0" layoutY="15.0" mnemonicParsing="false" onAction="#searchButtonPressed" prefHeight="25.0" prefWidth="67.0" text="Search" AnchorPane.rightAnchor="14.0" />
-                        <JFXListView fx:id="songResultsList" layoutX="13.0" layoutY="86.0" onMouseClicked="#onListItemClicked" prefHeight="514.0" prefWidth="654.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="86.0" />
+                        <JFXListView fx:id="songResultsList" layoutX="13.0" layoutY="86.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#onListItemClicked" prefHeight="514.0" prefWidth="654.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="86.0" />
                         <JFXCheckBox fx:id="jamendoCheckbox" layoutX="14.0" layoutY="55.0" text="Jamendo" AnchorPane.leftAnchor="14.0" />
                         <JFXCheckBox fx:id="deezerCheckbox" layoutX="107.0" layoutY="55.0" text="Deezer" AnchorPane.leftAnchor="107.0" />
                         <JFXCheckBox fx:id="spotifyCheckbox" layoutX="190.0" layoutY="55.0" text="Spotify" AnchorPane.leftAnchor="190.0" />

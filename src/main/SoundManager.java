@@ -40,6 +40,10 @@ public class SoundManager {
         queueListView = queue;
     }
 
+    /**
+     * Plays song
+     * @param song song to be played
+     */
     public static void playSong(Song song) {
         if (mediaPlayer != null) {
             mediaPlayer.stop();
@@ -224,12 +228,19 @@ public class SoundManager {
         }
     }
 
+    /**
+     * Handle stop button press
+     */
     public static void onStopPressed() {
         if (mediaPlayer != null) {
             mediaPlayer.stop();
         }
     }
 
+    /**
+     * Handle play button being pressed
+     * @return
+     */
     public static boolean onPlayPressed() {
         if (mediaPlayer != null) {
             MediaPlayer.Status status = mediaPlayer.getStatus();
@@ -245,5 +256,11 @@ public class SoundManager {
         return false;
     }
 
+    public static boolean isPlaying() {
+        return (mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING);
+    }
 
+    public static MediaPlayer getMediaPlayer() {
+        return mediaPlayer;
+    }
 }

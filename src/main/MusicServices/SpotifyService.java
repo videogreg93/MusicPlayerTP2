@@ -85,7 +85,13 @@ public class SpotifyService implements ServiceInterface {
 		}
 		return songs;
 	}
-	
+
+	/**
+	 * Parse response from http request
+	 * @param results the results to parse
+	 * @throws InterruptedException
+	 * @throws ExecutionException
+	 */
 	private void parseResponse(CompletableFuture<Paging<Track>> results) throws InterruptedException, ExecutionException
 	{
 		songs.clear();

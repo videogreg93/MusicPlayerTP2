@@ -1,3 +1,3 @@
 # Music Player
 
-Scene builder: http://gluonhq.com/products/scene-builder/
+Lancez l'application en appuyant sur MusicPlayer.jar , ou via le terminal avec la commande "java .jar ./MusicPlayer.jar"

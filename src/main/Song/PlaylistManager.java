@@ -19,7 +19,7 @@ import java.util.Optional;
 public class PlaylistManager {
     public static ArrayList<Playlist> allPlaylists;
 
-    private static JFXListView playlistListView;
+    public static JFXListView playlistListView;
     private static JFXListView queueListView;
 
     public static void init(JFXListView view, JFXListView queue) {
@@ -30,6 +30,9 @@ public class PlaylistManager {
         refreshPlaylistView();
     }
 
+    /**
+     * Method to create a new playlist
+     */
     public static void createNewPlaylist() {
         String defaultName = "newPlaylist" + (allPlaylists.size()+1);
         TextInputDialog dialog = new TextInputDialog(defaultName);
@@ -62,6 +65,9 @@ public class PlaylistManager {
 
     }
 
+    /**
+     * Refresh the playlist view with current data
+     */
     public static void refreshPlaylistView() {
         playlistListView.getItems().clear();
         // Add a new playlist button to the top of the playlist list
@@ -131,7 +137,7 @@ public class PlaylistManager {
     }
 
     /**
-     * Delets the playlist
+     * Deletes the playlist
      * @param playlist the playlist to be deleted
      */
     public static void deletePlaylist(Playlist playlist) {

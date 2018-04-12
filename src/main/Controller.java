@@ -19,10 +19,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.media.MediaPlayer;
-
 import main.MusicServices.DeezerService;
 import main.MusicServices.JamendoService;
-import main.MusicServices.ExampleService;
 import main.MusicServices.SpotifyService;
 import main.Song.PlaylistManager;
 import main.Song.Song;
@@ -48,7 +46,6 @@ public class Controller {
     public JFXCheckBox spotifyCheckbox;
 
     // Services
-    //ExampleService exampleService = new ExampleService();
     JamendoService jamendoService = new JamendoService();
     DeezerService deezerService = new DeezerService();
     SpotifyService spotifyService = new SpotifyService();
@@ -126,6 +123,7 @@ public class Controller {
                 HBox.setHgrow(seperator, Priority.ALWAYS);
                 // Add to playlist Button
                 Button addToPlaylist = new Button("Add to playlist");
+                addToPlaylist.getStyleClass().add("addToPlaylist");
                 addToPlaylist.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
@@ -134,6 +132,7 @@ public class Controller {
                 });
                 // Play Button
                 Button playSongButton = new Button("Play");
+                playSongButton.getStyleClass().add("play");
                 playSongButton.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {

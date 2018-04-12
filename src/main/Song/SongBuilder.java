@@ -1,6 +1,7 @@
 package main.Song;
 
 /**
+ * Builder class to create song objects
  * Created by Gregory on 3/1/2018.
  */
 public class SongBuilder {
