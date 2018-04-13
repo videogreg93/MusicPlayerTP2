@@ -55,5 +55,6 @@
     </orderEntry>
     <orderEntry type="library" name="org.testfx:testfx-core:4.0.8-alpha" level="project" />
     <orderEntry type="library" name="org.testfx:testfx-junit:4.0.8-alpha" level="project" />
+    <orderEntry type="library" name="org.json:json:20180130" level="project" />
   </component>
 </module>

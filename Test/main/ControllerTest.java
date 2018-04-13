@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import main.MusicServices.ServiceStub;
 import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
 
@@ -22,11 +23,14 @@ import static org.junit.Assert.assertFalse;
  */
 public class ControllerTest extends ApplicationTest {
     Parent root;
+    Controller controller;
 
 
     @Override public void start(Stage stage) {
         try {
-            root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("sample.fxml"));;
+            root = fxmlLoader.load();
+            controller = (Controller)fxmlLoader.getController();
             stage.setTitle("Music Player");
             stage.setScene(new Scene(root));
             stage.show();
@@ -42,7 +46,6 @@ public class ControllerTest extends ApplicationTest {
         searchBar.setText("dance");
         ((CheckBox)root.lookup("#jamendoCheckbox")).setSelected(true);
         clickOn("#searchButton");
-       // wait(3000);
         JFXListView list = ((JFXListView)root.lookup("#playlistListView"));
         assertFalse(list.getItems().isEmpty());
     }
@@ -53,23 +56,17 @@ public class ControllerTest extends ApplicationTest {
 
     @Test(timeout=10000)
     public void onPlayPressed() throws Exception {
-        TextField searchBar = (TextField) root.lookup("#searchBarTextField");
-        searchBar.setText("dance");
-        ((CheckBox)root.lookup("#jamendoCheckbox")).setSelected(true);
-        clickOn("#searchButton");
+        ServiceStub stub = new ServiceStub();
+        controller.addResultsToListView(stub.getSongs(""));
+        sleep(300);
         JFXListView list = ((JFXListView)root.lookup("#playlistListView"));
         Button playButton = (Button) root.lookup(".play");
-        sleep(2000);
+        sleep(300);
         clickOn(playButton);
-        sleep(2000);
+        sleep(1000);
         assertTrue(SoundManager.isPlaying());
         Button play = (Button) root.lookup("#playButton");
         assertTrue(play.getText().equals("||"));
-        clickOn(play);
-        assertTrue(play.getText().equals(">"));
-        assertFalse(SoundManager.isPlaying());
-
-
     }
 
 }

@@ -1,15 +1,14 @@
 package main.Song;
 
-import com.jfoenix.controls.JFXListView;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
+import main.Controller;
+import main.MusicServices.ServiceStub;
 import main.SoundManager;
 import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
@@ -23,11 +22,14 @@ import static junit.framework.TestCase.assertTrue;
  */
 public class PlaylistManagerTest extends ApplicationTest {
     Parent root;
+    Controller controller;
 
 
     @Override public void start(Stage stage) {
         try {
-            root = FXMLLoader.load(getClass().getResource("../sample.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../sample.fxml"));;
+            root = fxmlLoader.load();
+            controller = (Controller)fxmlLoader.getController();
             stage.setTitle("Music Player");
             stage.setScene(new Scene(root));
             stage.show();
@@ -72,14 +74,10 @@ public class PlaylistManagerTest extends ApplicationTest {
     public void addSongToPlaylist() throws Exception {
         Playlist p = PlaylistManager.allPlaylists.get(0);
         int soungCount = p.getAllSongs().size();
-
-        TextField searchBar = (TextField) root.lookup("#searchBarTextField");
-        searchBar.setText("dance");
-        ((CheckBox)root.lookup("#jamendoCheckbox")).setSelected(true);
-        clickOn("#searchButton");
-        JFXListView list = ((JFXListView)root.lookup("#playlistListView"));
+        ServiceStub serviceStub = new ServiceStub();
+        controller.addResultsToListView(serviceStub.getSongs(""));
+        sleep(300);
         Button addToPlaylistButton = (Button) root.lookup(".addToPlaylist");
-        sleep(1500);
         clickOn(addToPlaylistButton);
         press(KeyCode.ENTER);
         assertTrue(soungCount + 1 == p.allSongs.size());
@@ -104,7 +102,7 @@ public class PlaylistManagerTest extends ApplicationTest {
                 type(KeyCode.ENTER);
 
                 assertTrue(playlistAmount -1==PlaylistManager.allPlaylists.size());
-                System.out.println("DELETE");
+
             }
         });
 

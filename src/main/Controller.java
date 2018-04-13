@@ -104,6 +104,10 @@ public class Controller {
         if (spotifyCheckbox.isSelected())
             results.addAll(spotifyService.getSongs(query));
         songResultsList.getItems().clear();
+        addResultsToListView(results);
+    }
+
+    public void addResultsToListView(ArrayList<Song> results) {
         if (results != null)  {
             if (results.isEmpty()) {
                 Utils.ShowError("No songs found. Make sure at least one service is checked under the searchbar.");
@@ -146,7 +150,6 @@ public class Controller {
             }
         }
     }
-
 
 
     /**
