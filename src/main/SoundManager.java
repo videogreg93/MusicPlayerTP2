@@ -87,10 +87,6 @@ public class SoundManager {
 
                 // Highlight current item in play queue
                 queueListView.getSelectionModel().clearAndSelect(currentSongIndex);
-
-
-
-
             }
         });
     }
@@ -184,41 +180,9 @@ public class SoundManager {
             Region region = new Region();
             HBox.setHgrow(region, Priority.ALWAYS);
             // More info button
-            MenuItem moreInfo = new MenuItem("More info");
-            moreInfo.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    Stage dialog = new Stage();
-                    JFXListView<String> list = new JFXListView<String>();
-                    for(String key : song.getMetadata().keySet()) {
-                        list.getItems().add(key + ": " +  song.getMetadataValue(key));
-                    }
-                    dialog.setScene(new Scene(list));
-                    dialog.setMinWidth(200);
-                    dialog.setMinHeight(200);
-                    dialog.setTitle(song.getTitle());
-                    //dialog.initOwner(queueListView.getParent().getta);
-                    dialog.initModality(Modality.APPLICATION_MODAL);
-                    dialog.showAndWait();
-                }
-            });
-            MenuItem removeFromQueue = new MenuItem("Remove from queue");
-            removeFromQueue.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    currentQueue.removeSong(song);
-                    refreshQueueView();
-
-                }
-            });
-            MenuItem moveUp = new MenuItem("Move up in queue");
-            moveUp.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    currentQueue.moveUpSong(song);
-                    refreshQueueView();
-                }
-            });
+            MenuItem moreInfo = setupMoreInfoView(song);
+            MenuItem removeFromQueue = setupRemoveFromQueueView(song);
+            MenuItem moveUp = setupMoveUpView(song);
             MenuItem moveDown = new MenuItem("Move down in queue");
             moveDown.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -232,6 +196,53 @@ public class SoundManager {
             hBox.getChildren().addAll(artist, seperator, title, region, menuButton);
             queueListView.getItems().add(hBox);
         }
+    }
+
+    private static MenuItem setupMoveUpView(Song song) {
+        MenuItem moveUp = new MenuItem("Move up in queue");
+        moveUp.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                currentQueue.moveUpSong(song);
+                refreshQueueView();
+            }
+        });
+        return moveUp;
+    }
+
+    private static MenuItem setupRemoveFromQueueView(Song song) {
+        MenuItem removeFromQueue = new MenuItem("Remove from queue");
+        removeFromQueue.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                currentQueue.removeSong(song);
+                refreshQueueView();
+
+            }
+        });
+        return removeFromQueue;
+    }
+
+    private static MenuItem setupMoreInfoView(Song song) {
+        MenuItem moreInfo = new MenuItem("More info");
+        moreInfo.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Stage dialog = new Stage();
+                JFXListView<String> list = new JFXListView<String>();
+                for(String key : song.getMetadata().keySet()) {
+                    list.getItems().add(key + ": " +  song.getMetadataValue(key));
+                }
+                dialog.setScene(new Scene(list));
+                dialog.setMinWidth(200);
+                dialog.setMinHeight(200);
+                dialog.setTitle(song.getTitle());
+                //dialog.initOwner(queueListView.getParent().getta);
+                dialog.initModality(Modality.APPLICATION_MODAL);
+                dialog.showAndWait();
+            }
+        });
+        return moreInfo;
     }
 
     /**

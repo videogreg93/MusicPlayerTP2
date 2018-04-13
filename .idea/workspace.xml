@@ -9,7 +9,14 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MusicPlayer/main/Song/Playlist.class" afterPath="$PROJECT_DIR$/out/production/MusicPlayer/main/Song/Playlist.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MusicPlayer/main/Song/PlaylistManager.class" afterPath="$PROJECT_DIR$/out/production/MusicPlayer/main/Song/PlaylistManager.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MusicPlayer/main/Song/Song.class" afterPath="$PROJECT_DIR$/out/production/MusicPlayer/main/Song/Song.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Test/main/MusicServices/serviceTests.java" afterPath="$PROJECT_DIR$/Test/main/MusicServices/serviceTests.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/SoundManager.java" afterPath="$PROJECT_DIR$/src/main/SoundManager.java" />
+    </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -72,18 +79,42 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1142">
-              <caret line="138" column="56" lean-forward="false" selection-start-line="138" selection-start-column="52" selection-end-line="138" selection-end-column="56" />
+            <state relative-caret-position="-174">
+              <caret line="110" column="31" lean-forward="false" selection-start-line="110" selection-start-column="31" selection-end-line="110" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SongBuilder.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/Song/SongBuilder.java">
+      <file leaf-file-name="serviceTests.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Test/main/MusicServices/serviceTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+            <state relative-caret-position="263">
+              <caret line="49" column="25" lean-forward="true" selection-start-line="49" selection-start-column="25" selection-end-line="49" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SoundManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/SoundManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-279">
+              <caret line="88" column="83" lean-forward="false" selection-start-line="88" selection-start-column="83" selection-end-line="88" selection-end-column="83" />
+              <folding>
+                <element signature="e#8763#8771#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlaylistManagerTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Test/main/Song/PlaylistManagerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-848">
+              <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -92,34 +123,10 @@
       <file leaf-file-name="JamendoService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/MusicServices/JamendoService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="90" column="0" lean-forward="false" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+            <state relative-caret-position="-735">
+              <caret line="84" column="54" lean-forward="true" selection-start-line="84" selection-start-column="54" selection-end-line="84" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="serviceTests.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Test/main/MusicServices/serviceTests.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="713">
-              <caret line="60" column="49" lean-forward="false" selection-start-line="60" selection-start-column="49" selection-end-line="60" selection-end-column="49" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Song.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/Song/Song.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="33" column="38" lean-forward="false" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
-              <folding>
-                <element signature="e#789#790#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -128,11 +135,9 @@
       <file leaf-file-name="ControllerTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Test/main/ControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
-              <caret line="23" column="28" lean-forward="false" selection-start-line="23" selection-start-column="28" selection-end-line="40" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="-248">
+              <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -157,6 +162,7 @@
       <find>Artist</find>
       <find>printl</find>
       <find>start</find>
+      <find>todo</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -187,24 +193,24 @@
         <option value="$PROJECT_DIR$/src/main/MusicServices/ServiceInterface.java" />
         <option value="$PROJECT_DIR$/src/main/MusicServices/ExampleService.java" />
         <option value="$PROJECT_DIR$/playlists.json" />
-        <option value="$PROJECT_DIR$/src/main/Song/Playlist.java" />
-        <option value="$PROJECT_DIR$/src/main/MusicServices/DeezerService.java" />
-        <option value="$PROJECT_DIR$/src/main/MusicServices/JamendoService.java" />
-        <option value="$PROJECT_DIR$/src/main/MusicServices/SpotifyService.java" />
         <option value="$PROJECT_DIR$/src/main/Song/SongBuilder.java" />
-        <option value="$PROJECT_DIR$/src/main/Song/PlaylistManager.java" />
         <option value="$PROJECT_DIR$/src/main/Utils.java" />
         <option value="$PROJECT_DIR$/src/main/ControllerTest.java" />
         <option value="$MAVEN_REPOSITORY$/org/testfx/testfx-junit/4.0.8-alpha/testfx-junit-4.0.8-alpha.jar!/org/testfx/framework/junit/ApplicationTest.class" />
-        <option value="$PROJECT_DIR$/src/main/SoundManager.java" />
         <option value="$PROJECT_DIR$/src/main/sample.fxml" />
         <option value="$PROJECT_DIR$/Test/main/SoundManagerTest.java" />
         <option value="$PROJECT_DIR$/src/main/Controller.java" />
         <option value="$PROJECT_DIR$/src/main/MusicServices/ServiceStub.java" />
         <option value="$PROJECT_DIR$/Test/main/Song/PlaylistManagerTest.java" />
         <option value="$PROJECT_DIR$/Test/main/ControllerTest.java" />
-        <option value="$PROJECT_DIR$/src/main/Song/Song.java" />
         <option value="$PROJECT_DIR$/Test/main/MusicServices/JamendoServiceTest.java" />
+        <option value="$PROJECT_DIR$/src/main/Song/Playlist.java" />
+        <option value="$PROJECT_DIR$/src/main/Song/PlaylistManager.java" />
+        <option value="$PROJECT_DIR$/src/main/MusicServices/DeezerService.java" />
+        <option value="$PROJECT_DIR$/src/main/MusicServices/JamendoService.java" />
+        <option value="$PROJECT_DIR$/src/main/Song/Song.java" />
+        <option value="$PROJECT_DIR$/src/main/MusicServices/SpotifyService.java" />
+        <option value="$PROJECT_DIR$/src/main/SoundManager.java" />
         <option value="$PROJECT_DIR$/Test/main/MusicServices/serviceTests.java" />
       </list>
     </option>
@@ -212,6 +218,7 @@
   <component name="JavaAutoRunManager">
     <enabled-run-configurations>
       <run-configuration type="JUnit" name="PlaylistManagerTest.playPlaylist" />
+      <run-configuration type="JUnit" name="AllTests" />
     </enabled-run-configurations>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
@@ -234,7 +241,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator currentView="Scope" currentSubView="Tests" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -249,7 +256,42 @@
     </navigator>
     <panes>
       <pane id="AndroidView" />
-      <pane id="Scope" />
+      <pane id="Scope">
+        <subPane subId="Tests">
+          <expand>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="MusicPlayerTP2-master" type="cbb8eebc:String" user="MusicPlayerTP2-master" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="MusicPlayerTP2-master" type="cbb8eebc:String" user="MusicPlayerTP2-master" />
+              <item name="Test" type="cbb8eebc:String" user="Test" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="MusicPlayerTP2-master" type="cbb8eebc:String" user="MusicPlayerTP2-master" />
+              <item name="Test" type="cbb8eebc:String" user="Test" />
+              <item name="main" type="cbb8eebc:String" user="main" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="MusicPlayerTP2-master" type="cbb8eebc:String" user="MusicPlayerTP2-master" />
+              <item name="Test" type="cbb8eebc:String" user="Test" />
+              <item name="main" type="cbb8eebc:String" user="main" />
+              <item name="MusicServices" type="cbb8eebc:String" user="MusicServices" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="MusicPlayerTP2-master" type="cbb8eebc:String" user="MusicPlayerTP2-master" />
+              <item name="Test" type="cbb8eebc:String" user="Test" />
+              <item name="main" type="cbb8eebc:String" user="main" />
+              <item name="Song" type="cbb8eebc:String" user="Song" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="PackagesPane" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
@@ -368,7 +410,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.AllTests">
+  <component name="RunManager">
     <configuration name="AllTests" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="MusicPlayer" />
@@ -658,8 +700,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.serviceTests" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.serviceTests.JamendoGetSongs" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.serviceTests.JamendoGetSongs" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.serviceTests" />
         <item index="2" class="java.lang.String" itemvalue="JUnit.PlaylistManagerTest.addSongToPlaylist" />
         <item index="3" class="java.lang.String" itemvalue="JUnit.ControllerTest.onPlayPressed" />
         <item index="4" class="java.lang.String" itemvalue="JUnit.PlaylistManagerTest" />
@@ -704,14 +746,21 @@
       <option name="project" value="LOCAL" />
       <updated>1520617402086</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Removed todos and code in comments. Refactored Soundmanager.playSong().">
+      <created>1523628834477</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1523628834477</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="AllTests - 2018.04.13 at 09h 21m 12s.xml">
+    <history-entry file="AllTests - 2018.04.13 at 09h 44m 35s.xml">
       <configuration name="AllTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AllTests - 2018.04.13 at 09h 44m 35s.xml">
+    <history-entry file="AllTests - 2018.04.13 at 10h 21m 39s.xml">
       <configuration name="AllTests" configurationId="JUnit" />
     </history-entry>
     <history-entry file="JamendoServiceTest - 2018.04.13 at 09h 39m 25s.xml">
@@ -723,20 +772,20 @@
     <history-entry file="JamendoServiceTest - 2018.04.13 at 09h 40m 25s.xml">
       <configuration name="JamendoServiceTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="JamendoServiceTest_getSongs - 2018.04.13 at 09h 37m 25s.xml">
-      <configuration name="JamendoServiceTest.getSongs" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="JamendoServiceTest_getSongs - 2018.04.13 at 09h 38m 09s.xml">
       <configuration name="JamendoServiceTest.getSongs" configurationId="JUnit" />
     </history-entry>
     <history-entry file="JamendoServiceTest_getSongs - 2018.04.13 at 09h 39m 08s.xml">
       <configuration name="JamendoServiceTest.getSongs" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PlaylistManagerTest_addSongToPlaylist - 2018.04.13 at 09h 20m 19s.xml">
-      <configuration name="PlaylistManagerTest.addSongToPlaylist" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="serviceTests - 2018.04.13 at 09h 44m 08s.xml">
       <configuration name="serviceTests" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="serviceTests_JamendoGetSongs - 2018.04.13 at 10h 22m 53s.xml">
+      <configuration name="serviceTests.JamendoGetSongs" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="serviceTests_JamendoGetSongs - 2018.04.13 at 10h 23m 40s.xml">
+      <configuration name="serviceTests.JamendoGetSongs" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
@@ -757,11 +806,11 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33766234" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32533333" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33470508" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10782241" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.184" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30133334" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -834,7 +883,8 @@
     <MESSAGE value="Added music playback via URIs and WIP currently playing UI." />
     <MESSAGE value="Added a seekbar to scroll through music. Can now save playlists. Will now add loading back playlists." />
     <MESSAGE value="Merge remote-tracking branch 'remotes/origin/joseph'&#10;&#10;# Conflicts:&#10;#&#9;out/production/MusicPlayer/main/Controller$1.class&#10;#&#9;out/production/MusicPlayer/main/Controller.class&#10;#&#9;out/production/MusicPlayer/main/MusicServices/ExampleService.class&#10;#&#9;out/production/MusicPlayer/main/Song/Playlist.class&#10;#&#9;out/production/MusicPlayer/main/Song/PlaylistManager.class&#10;#&#9;out/production/MusicPlayer/main/Song/Song.class&#10;#&#9;src/main/Controller.java&#10;#&#9;src/main/Song/Song.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'remotes/origin/joseph'&#10;&#10;# Conflicts:&#10;#&#9;out/production/MusicPlayer/main/Controller$1.class&#10;#&#9;out/production/MusicPlayer/main/Controller.class&#10;#&#9;out/production/MusicPlayer/main/MusicServices/ExampleService.class&#10;#&#9;out/production/MusicPlayer/main/Song/Playlist.class&#10;#&#9;out/production/MusicPlayer/main/Song/PlaylistManager.class&#10;#&#9;out/production/MusicPlayer/main/Song/Song.class&#10;#&#9;src/main/Controller.java&#10;#&#9;src/main/Song/Song.java" />
+    <MESSAGE value="Removed todos and code in comments. Refactored Soundmanager.playSong()." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed todos and code in comments. Refactored Soundmanager.playSong()." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1013,13 +1063,6 @@
     <entry file="file://$PROJECT_DIR$/src/images/default.png" />
     <entry file="file://$PROJECT_DIR$/src/main/MusicServices/ExampleService.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/src.zip!/java/lang/String.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/MusicServices/SpotifyService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="90" column="42" lean-forward="false" selection-start-line="90" selection-start-column="42" selection-end-line="90" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/MusicServices/ServiceInterface.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1033,6 +1076,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="12" column="8" lean-forward="false" selection-start-line="12" selection-start-column="8" selection-end-line="15" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1045,14 +1089,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Song/Playlist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/Utils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -1062,34 +1098,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Test/main/SoundManagerTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/SoundManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="65" column="60" lean-forward="false" selection-start-line="65" selection-start-column="60" selection-end-line="65" selection-end-column="60" />
-          <folding>
-            <element signature="e#9924#9925#0" expanded="false" />
-            <element signature="e#9958#9959#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://H:/Program Files/Java/jdk1.8.0_60/src.zip!/java/util/stream/ForEachOps.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/Song/PlaylistManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="40" column="23" lean-forward="false" selection-start-line="40" selection-start-column="23" selection-end-line="40" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/MusicServices/DeezerService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="14" lean-forward="false" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/sample.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -1113,24 +1122,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Test/main/Song/PlaylistManagerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1055">
-          <caret line="75" column="48" lean-forward="false" selection-start-line="75" selection-start-column="48" selection-end-line="75" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1142">
-          <caret line="138" column="56" lean-forward="false" selection-start-line="138" selection-start-column="52" selection-end-line="138" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/Song/SongBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="158">
@@ -1139,30 +1130,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Test/main/ControllerTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/Song/Playlist.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="23" column="28" lean-forward="false" selection-start-line="23" selection-start-column="28" selection-end-line="40" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="152">
+          <caret line="18" column="36" lean-forward="false" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Test/main/MusicServices/serviceTests.java">
+    <entry file="file://$PROJECT_DIR$/src/main/Song/PlaylistManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="713">
-          <caret line="60" column="49" lean-forward="false" selection-start-line="60" selection-start-column="49" selection-end-line="60" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="133">
+          <caret line="49" column="32" lean-forward="false" selection-start-line="49" selection-start-column="32" selection-end-line="49" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/MusicServices/JamendoService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/MusicServices/DeezerService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="90" column="0" lean-forward="false" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+        <state relative-caret-position="-1506">
+          <caret line="18" column="32" lean-forward="false" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1171,10 +1158,80 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/Song/Song.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="33" column="38" lean-forward="false" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
+        <state relative-caret-position="-351">
+          <caret line="18" column="37" lean-forward="false" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
           <folding>
-            <element signature="e#789#790#0" expanded="true" />
+            <element signature="e#257#258#0" expanded="true" />
+            <element signature="e#305#306#0" expanded="true" />
+            <element signature="e#338#339#0" expanded="true" />
+            <element signature="e#382#383#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/MusicServices/SpotifyService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding>
+            <element signature="e#2414#2415#0" expanded="true" />
+            <element signature="e#2445#2446#0" expanded="true" />
+            <element signature="e#2490#2491#0" expanded="true" />
+            <element signature="e#2509#2510#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/MusicServices/JamendoService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-735">
+          <caret line="84" column="54" lean-forward="true" selection-start-line="84" selection-start-column="54" selection-end-line="84" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/SoundManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-279">
+          <caret line="88" column="83" lean-forward="false" selection-start-line="88" selection-start-column="83" selection-end-line="88" selection-end-column="83" />
+          <folding>
+            <element signature="e#8763#8771#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-174">
+          <caret line="110" column="31" lean-forward="false" selection-start-line="110" selection-start-column="31" selection-end-line="110" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test/main/ControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-248">
+          <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test/main/Song/PlaylistManagerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-848">
+          <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Test/main/MusicServices/serviceTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="49" column="25" lean-forward="true" selection-start-line="49" selection-start-column="25" selection-end-line="49" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

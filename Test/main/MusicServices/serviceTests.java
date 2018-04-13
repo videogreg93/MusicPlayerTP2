@@ -40,7 +40,7 @@ public class serviceTests extends ApplicationTest {
         ArrayList<Song> results = jamendoService.getSongs("The Beetles");
         assertFalse(results.size() == 0);
         Song s = results.get(0);
-        assertTrue(s.getTitle().equals("We Got The Love"));
+        assertTrue(s.getTitle().equals("To The Roofs"));
     }
 
     @Test
