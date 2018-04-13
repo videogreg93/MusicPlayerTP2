@@ -17,22 +17,10 @@ public class DeezerService implements ServiceInterface {
 
     ArrayList<Song> songs;
     boolean isConnected = false;
-    //static final String client_id = "687772c1";
 
     public DeezerService() {
 
         songs = new ArrayList<Song>();
-
-        //SongBuilder b = new SongBuilder();
-
-        /*
-        songs.add(
-                b.title("People are strange")
-                        .imageUrl("/images/sample1.jpg")
-                        .addMusicUri("/songs/song5.wav")
-                        .build());
-
-                */
     }
 
     @Override

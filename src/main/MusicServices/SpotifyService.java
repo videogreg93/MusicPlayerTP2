@@ -36,7 +36,6 @@ public class SpotifyService implements ServiceInterface {
 	      // Set access token for further "spotifyApi" object usage
 	      spotifyApi.setAccessToken(clientCredentials.getAccessToken());
 
-	      //System.out.println("Expires in: " + clientCredentials.getExpiresIn());
 	    } catch (InterruptedException | ExecutionException e) {
 	      System.out.println("Error: " + e.getCause().getMessage());
 	    }
@@ -56,19 +55,16 @@ public class SpotifyService implements ServiceInterface {
 
 	@Override
 	public void connect() {
-		// TODO Auto-generated method stub
 		clientCredentialsAsync();
 	}
 
 	@Override
 	public boolean authenticate() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public void disconnect() {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -77,10 +73,8 @@ public class SpotifyService implements ServiceInterface {
 		try {
 			parseResponse(searchTracksAsync(query));
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return songs;

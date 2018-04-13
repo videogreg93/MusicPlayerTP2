@@ -58,8 +58,6 @@ public class SoundManager {
                 imageView.setFitWidth(80);
                 imageView.setPreserveRatio(true);
                 String title = song.getTitle();
-                //Region seperator = new Region();
-                //HBox.setHgrow(seperator, Priority.ALWAYS);
 
                 // get song time
                 double millis = mediaPlayer.getTotalDuration().toMillis();
@@ -68,42 +66,12 @@ public class SoundManager {
                 String time = "00:00  /  " + minutes + ":" + seconds;
                 Label timeLabel = new Label(time);
                 // Seekbar
-                JFXSlider seekbar = new JFXSlider(0, mediaPlayer.getTotalDuration().toSeconds() - 2,0 );
-                seekbar.setOnMousePressed(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent event) {
-                        System.out.println("Clicked");
-                        isSeeking = true;
-
-                    }
-                });
-                seekbar.setOnMouseReleased(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent event) {
-                        System.out.println("Released");
-                        mediaPlayer.seek(new Duration(seekbar.getValue() * 1000));
-                        isSeeking = false;
-                    }
-                });
+                JFXSlider seekbar = setupJFXSlider();
                 HBox.setHgrow(seekbar, Priority.ALWAYS);
                 currentlyPlayingView.getChildren().addAll(imageView
                         ,seekbar,new Label(title), timeLabel);
                 // Set listener to update time
-                mediaPlayer.currentTimeProperty().addListener(new ChangeListener<Duration>() {
-                    @Override
-                    public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
-                        //TODO better formating
-                        double currentMillis = newValue.toMillis();
-                        int currentMinutes = (int) ((currentMillis / 1000)  / 60);
-                        int currentSeconds = (int) ((currentMillis / 1000) % 60);
-                        String total = currentMinutes + ":" + currentSeconds + "  /  " + minutes + ":" + seconds;
-                        timeLabel.setText(total);
-                        // update seekbar if we're not currently seeking a new position
-                        if (!isSeeking) {
-                            seekbar.setValue(newValue.toSeconds());
-                        }
-                    }
-                });
+                addUpdateSeekbarListener(minutes, seconds, timeLabel, seekbar);
                 mediaPlayer.play();
 
                 // If this is a playlist, set it to play the next song afterwards
@@ -123,6 +91,44 @@ public class SoundManager {
 
 
 
+            }
+        });
+    }
+
+    private static JFXSlider setupJFXSlider() {
+        JFXSlider seekbar = new JFXSlider(0, mediaPlayer.getTotalDuration().toSeconds() - 2,0 );
+        seekbar.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                System.out.println("Clicked");
+                isSeeking = true;
+
+            }
+        });
+        seekbar.setOnMouseReleased(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                System.out.println("Released");
+                mediaPlayer.seek(new Duration(seekbar.getValue() * 1000));
+                isSeeking = false;
+            }
+        });
+        return seekbar;
+    }
+
+    private static void addUpdateSeekbarListener(int minutes, int seconds, Label timeLabel, JFXSlider seekbar) {
+        mediaPlayer.currentTimeProperty().addListener(new ChangeListener<Duration>() {
+            @Override
+            public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
+                double currentMillis = newValue.toMillis();
+                int currentMinutes = (int) ((currentMillis / 1000)  / 60);
+                int currentSeconds = (int) ((currentMillis / 1000) % 60);
+                String total = currentMinutes + ":" + currentSeconds + "  /  " + minutes + ":" + seconds;
+                timeLabel.setText(total);
+                // update seekbar if we're not currently seeking a new position
+                if (!isSeeking) {
+                    seekbar.setValue(newValue.toSeconds());
+                }
             }
         });
     }

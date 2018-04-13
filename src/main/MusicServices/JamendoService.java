@@ -22,17 +22,6 @@ public class JamendoService implements ServiceInterface {
     public JamendoService() {
 
         songs = new ArrayList<Song>();
-
-        //SongBuilder b = new SongBuilder();
-
-        /*
-        songs.add(
-                b.title("People are strange")
-                        .imageUrl("/images/sample1.jpg")
-                        .addMusicUri("/songs/song5.wav")
-                        .build());
-
-                */
     }
 
     @Override

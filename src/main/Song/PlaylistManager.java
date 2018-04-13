@@ -48,7 +48,6 @@ public class PlaylistManager {
             boolean isValid = true;
             if (name.isEmpty())
                 isValid = false;
-            //TODO this whole part is kinda wonky
             for (Playlist playlist : allPlaylists) {
                 if (playlist.getName().equals(name))
                     isValid = false;

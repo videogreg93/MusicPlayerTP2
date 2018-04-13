@@ -17,7 +17,6 @@ public class Playlist {
      * @param song
      */
     public void addSong(Song song) {
-        // TODO check if song isnt already present
         allSongs.add(song);
         PlaylistManager.refreshPlaylistView();
     }
