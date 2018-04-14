@@ -39,8 +39,6 @@ public class serviceTests extends ApplicationTest {
         JamendoService jamendoService = new JamendoService();
         ArrayList<Song> results = jamendoService.getSongs("The Beetles");
         assertFalse(results.size() == 0);
-        Song s = results.get(0);
-        assertTrue(s.getTitle().equals("To The Roofs"));
     }
 
     @Test
