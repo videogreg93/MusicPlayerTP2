@@ -9,6 +9,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import main.MusicServices.ServiceStub;
+import main.Song.Song;
 import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
 
@@ -50,8 +51,15 @@ public class ControllerTest extends ApplicationTest {
         assertFalse(list.getItems().isEmpty());
     }
 
-    @Test
+    @Test(timeout = 15000)
     public void onStopPressed() throws Exception {
+        ServiceStub stub = new ServiceStub();
+        Song s = stub.getSongs("").get(0);
+        SoundManager.playSong(s);
+        sleep(200);
+        Button stopButton = (Button) root.lookup("#stopButton");
+        clickOn(stopButton);
+        assertFalse(SoundManager.isPlaying());
     }
 
     @Test(timeout=10000)
