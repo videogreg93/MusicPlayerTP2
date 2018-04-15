@@ -19,9 +19,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.media.MediaPlayer;
-import main.MusicServices.DeezerService;
-import main.MusicServices.JamendoService;
-import main.MusicServices.SpotifyService;
+import main.MusicServices.ServiceFacade;
 import main.Song.PlaylistManager;
 import main.Song.Song;
 
@@ -46,10 +44,7 @@ public class Controller {
     public JFXCheckBox spotifyCheckbox;
 
     // Services
-    JamendoService jamendoService = new JamendoService();
-    DeezerService deezerService = new DeezerService();
-    SpotifyService spotifyService = new SpotifyService();
-
+    ServiceFacade services = new ServiceFacade();
 
     // Handle music playing
     MediaPlayer mediaPlayer;
@@ -71,8 +66,7 @@ public class Controller {
         SoundManager.initialize(currentlyPlaying, queueList);
 
         // Connect Services
-        spotifyService.connect();
-        spotifyService.authenticate();
+        services.connectServices();
 
         // Setup certain event handlers
         queueList.getSelectionModel().getSelectedItems().addListener(new ListChangeListener() {
@@ -93,17 +87,22 @@ public class Controller {
      * @param actionEvent the event
      */
     public void searchButtonPressed(ActionEvent actionEvent) {
+
+        boolean[] checkedServices = new boolean[3];
+        ArrayList<Song> results;
+
         // Get search query
         String query = searchBarTextField.getText();
-        searchBarTextField.clear();
-        ArrayList<Song> results = new ArrayList<>();
+
         if (jamendoCheckbox.isSelected())
-            results = jamendoService.getSongs(query);
+            checkedServices[0] = true;
         if (deezerCheckbox.isSelected())
-            results.addAll(deezerService.getSongs(query));
+            checkedServices[1] = true;
         if (spotifyCheckbox.isSelected())
-            results.addAll(spotifyService.getSongs(query));
+            checkedServices[2] = true;
+
         songResultsList.getItems().clear();
+        results = services.getAllSongs(query, checkedServices);
         addResultsToListView(results);
     }
 
